@@ -5,6 +5,10 @@ using SureAppTest.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Prism.DryIoc;
+using SureAppTest.DataAccess.Factories;
+using SureAppTest.Services;
+using SureAppTest.DataAccess.ApiCalls;
+using SureAppTest.Facade.Facades;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace SureAppTest
@@ -29,10 +33,17 @@ namespace SureAppTest
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            //Register Navigations
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage>();
             containerRegistry.RegisterForNavigation<EventsListPage>();
             containerRegistry.RegisterForNavigation<MediSupplierPage>();
+
+            //Register Types
+            containerRegistry.Register<IRestService, RestService>();
+            containerRegistry.Register<IEventsApi, EventsApi>();
+            containerRegistry.Register<IEventsFacade, EventsFacade>();
+
         }
     }
 }

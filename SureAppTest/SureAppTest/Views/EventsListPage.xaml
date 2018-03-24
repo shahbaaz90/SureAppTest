@@ -17,7 +17,8 @@
                     <ImageCell
                         Text="{Binding EventTitle}"
                         Detail="{Binding EventCity}"
-                        DetailColor="Gray" />
+                        DetailColor="Gray"
+                        ImageSource="{Binding EventImageURL}" />
                 </DataTemplate>
             </controls:InfiniteListControl.ItemTemplate>
         </controls:InfiniteListControl>

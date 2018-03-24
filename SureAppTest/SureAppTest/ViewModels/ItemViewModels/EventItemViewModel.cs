@@ -29,15 +29,15 @@ namespace SureAppTest.ViewModels.ItemViewModels
             set { SetProperty(ref eventImageURL, value); }
         }
 
-        private DateTime eventStartDate;
-        public DateTime EventStartDate
+        private DateTime? eventStartDate;
+        public DateTime? EventStartDate
         {
             get { return eventStartDate; }
             set { SetProperty(ref eventStartDate, value); }
         }
 
-        private DateTime eventEndDate;
-        public DateTime EventEndDate
+        private DateTime? eventEndDate;
+        public DateTime? EventEndDate
         {
             get { return eventEndDate; }
             set { SetProperty(ref eventEndDate, value); }

@@ -9,7 +9,13 @@ namespace SureAppTest.Controls
 {
     class InfiniteListControl : ListView, IDisposable
     {
-        public static readonly BindableProperty LoadMoreCommandProperty = BindableProperty.Create<InfiniteListControl, ICommand>(bp => bp.LoadMoreCommand, default(ICommand));
+        //public static readonly BindableProperty LoadMoreCommandProperty = BindableProperty.Create<InfiniteListControl, ICommand>(bp => bp.LoadMoreCommand, default(ICommand));
+
+        public static readonly BindableProperty LoadMoreCommandProperty = BindableProperty
+            .Create(nameof(LoadMoreCommand),
+            typeof(ICommand),
+            typeof(InfiniteListControl),
+            default(ICommand));
 
         public ICommand LoadMoreCommand
         {
