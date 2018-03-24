@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:controls="clr-namespace:SureAppTest.Controls;assembly=SureAppTest"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    x:Class="SureAppTest.Views.EventsListPage"
+    Title="{Binding Title}"
+    Padding="5,0,5,5">
+    <ContentPage.Content>
+
+        <controls:InfiniteListControl
+            ItemsSource="{Binding EventsList}">
+            <controls:InfiniteListControl.ItemTemplate>
+                <DataTemplate>
+                    <ImageCell
+                        Text="{Binding EventTitle}"
+                        Detail="{Binding EventCity}"
+                        DetailColor="Gray" />
+                </DataTemplate>
+            </controls:InfiniteListControl.ItemTemplate>
+        </controls:InfiniteListControl>
+
+    </ContentPage.Content>
+</ContentPage>

@@ -31,6 +31,8 @@ namespace SureAppTest
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage>();
+            containerRegistry.RegisterForNavigation<EventsListPage>();
+            containerRegistry.RegisterForNavigation<MediSupplierPage>();
         }
     }
 }

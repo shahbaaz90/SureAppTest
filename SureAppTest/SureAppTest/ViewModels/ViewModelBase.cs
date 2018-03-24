@@ -11,11 +11,18 @@ namespace SureAppTest.ViewModels
     {
         protected INavigationService NavigationService { get; private set; }
 
-        private string _title;
+        private string title;
         public string Title
         {
-            get { return _title; }
-            set { SetProperty(ref _title, value); }
+            get { return title; }
+            set { SetProperty(ref title, value); }
+        }
+
+        private bool isBusy;
+        public bool IsBusy
+        {
+            get { return isBusy; }
+            set { SetProperty(ref isBusy, value); }
         }
 
         public ViewModelBase(INavigationService navigationService)
