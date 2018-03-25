@@ -2,26 +2,61 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     xmlns:controls="clr-namespace:SureAppTest.Controls;assembly=SureAppTest"
-    prism:ViewModelLocator.AutowireViewModel="True"
     x:Class="SureAppTest.Views.EventsListPage"
-    Title="{Binding Title}"
-    Padding="5,0,5,5">
+    Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Icon="ic_sort.png"
+            Text="Sort"
+            Command="{Binding SortEventsCommand}" />
+        <ToolbarItem
+            Icon="ic_filter2.png"
+            Text="Filter"
+            Command="{Binding FilterEventsCommand}" />
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
 
-        <controls:InfiniteListControl
-            ItemsSource="{Binding EventsList}">
-            <controls:InfiniteListControl.ItemTemplate>
-                <DataTemplate>
-                    <ImageCell
-                        Text="{Binding EventTitle}"
-                        Detail="{Binding EventCity}"
-                        DetailColor="Gray"
-                        ImageSource="{Binding EventImageURL}" />
-                </DataTemplate>
-            </controls:InfiniteListControl.ItemTemplate>
-        </controls:InfiniteListControl>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition
+                    Height="Auto" />
+                <RowDefinition
+                    Height="*" />
+            </Grid.RowDefinitions>
+            <SearchBar
+                Grid.Row="0"
+                HorizontalOptions="FillAndExpand"
+                Text="{Binding TextSearchTitle}"
+                SearchCommand="{Binding SearchTitleCommand}" />
 
+            <controls:InfiniteListControl
+                Grid.Row="1"
+                Margin="5,0,5,5"
+                ItemsSource="{Binding EventsList}">
+                <controls:InfiniteListControl.ItemTemplate>
+                    <DataTemplate>
+                        <ImageCell
+                            Text="{Binding EventTitle}"
+                            Detail="{Binding EventCity}"
+                            DetailColor="Gray"
+                            ImageSource="{Binding EventImageURL}" />
+                    </DataTemplate>
+                </controls:InfiniteListControl.ItemTemplate>
+            </controls:InfiniteListControl>
+            <Grid
+                Grid.RowSpan="2"
+                IsVisible="{Binding IsBusy}">
+                <Grid
+                    BackgroundColor="Black"
+                    Opacity="0.2" />
+                <ActivityIndicator
+                    Color="OrangeRed"
+                    IsRunning="true"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                </ActivityIndicator>
+            </Grid>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -9,6 +9,7 @@ using SureAppTest.DataAccess.Factories;
 using SureAppTest.Services;
 using SureAppTest.DataAccess.ApiCalls;
 using SureAppTest.Facade.Facades;
+using SureAppTest.Common.Services;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace SureAppTest
@@ -38,12 +39,13 @@ namespace SureAppTest
             containerRegistry.RegisterForNavigation<MainPage>();
             containerRegistry.RegisterForNavigation<EventsListPage>();
             containerRegistry.RegisterForNavigation<MediSupplierPage>();
+            containerRegistry.RegisterForNavigation<EventsFilterPage>();
 
             //Register Types
             containerRegistry.Register<IRestService, RestService>();
             containerRegistry.Register<IEventsApi, EventsApi>();
             containerRegistry.Register<IEventsFacade, EventsFacade>();
-
+            containerRegistry.Register<IMediCareService, MediCareService>();
         }
     }
 }

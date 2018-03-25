@@ -12,5 +12,7 @@ namespace SureAppTest.Facade.Facades
         Task<IEnumerable<EventModel>> SearchEvents(EventsListRequestModel eventsListRequestModel);
 
         Task<IEnumerable<EventModel>> FilterEvents(DateTime? startDate, DateTime? endDate, int cityID = 0);
+
+        Task<IEnumerable<EventModel>> SearchEventByTitle(string eventTitle);
     }
 }
