@@ -86,7 +86,7 @@ namespace SureAppTest.Services
             HttpResponseMessage result = null;
             using (var client = new HttpClient(new HttpClientHandler()))
             {
-                client.Timeout = TimeSpan.FromSeconds(40);
+                client.Timeout = TimeSpan.FromSeconds(60);
 
                 try
                 {

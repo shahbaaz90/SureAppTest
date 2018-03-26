@@ -51,7 +51,7 @@ namespace SureAppTest.Facade.Facades
             eventsListRequestModel.categoryID = "0";
             eventsListRequestModel.eventId = string.Empty;
             eventsListRequestModel.lang = "en";
-            eventsListRequestModel.pageSize = 25;
+            eventsListRequestModel.pageSize = 6000;
             eventsListRequestModel.regionID = 0;
             eventsListRequestModel.startIndex = 0;
 

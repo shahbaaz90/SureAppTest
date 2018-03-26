@@ -42,6 +42,44 @@ namespace SureAppTest.ViewModels
                 .ObservesProperty(() => IsBusy);
         }
 
+        private ObservableCollection<EventItemViewModel> eventsList;
+        public ObservableCollection<EventItemViewModel> EventsList
+        {
+            get { return eventsList; }
+            set { SetProperty(ref eventsList, value); }
+        }
+
+        private EventItemViewModel eventSelected;
+        public EventItemViewModel EventSelected
+        {
+            get { return eventSelected; }
+            set { SetProperty(ref eventSelected, value, OnEventSelected); }
+        }
+
+        private string textSearchTitle;
+        public string TextSearchTitle
+        {
+            get { return textSearchTitle; }
+            set { SetProperty(ref textSearchTitle, value); }
+        }
+
+        public ICommand SortEventsCommand { get; private set; }
+        public ICommand FilterEventsCommand { get; private set; }
+        public ICommand SearchTitleCommand { get; private set; }
+
+        private void OnEventSelected()
+        {
+            if (EventSelected != null)
+            {
+                NavigationParameters eventparams = new NavigationParameters
+                {
+                    { "EventDetails", EventSelected }
+                };
+
+                NavigationService.NavigateAsync("EventMapPage", eventparams);
+            }
+        }
+
         private void SearchEventTitle()
         {
 
@@ -105,24 +143,6 @@ namespace SureAppTest.ViewModels
             IsBusy = false;
         }
 
-        private ObservableCollection<EventItemViewModel> eventsList;
-        public ObservableCollection<EventItemViewModel> EventsList
-        {
-            get { return eventsList; }
-            set { SetProperty(ref eventsList, value); }
-        }
-
-        private string textSearchTitle;
-        public string TextSearchTitle
-        {
-            get { return textSearchTitle; }
-            set { SetProperty(ref textSearchTitle, value); }
-        }
-
-        public ICommand SortEventsCommand { get; private set; }
-        public ICommand FilterEventsCommand { get; private set; }
-        public ICommand SearchTitleCommand { get; private set; }
-
         public override async void OnNavigatedTo(NavigationParameters parameters)
         {
             base.OnNavigatedTo(parameters);
@@ -165,7 +185,9 @@ namespace SureAppTest.ViewModels
                     EventCity = eventItem.CityEnName + ", " + eventItem.EventStartDate,
                     EventStartDate = eventItem.EventStartDate,
                     EventEndDate = eventItem.EventEndDate,
-                    EventImageURL = SharedConfig.SaudiEventsApiRoot + eventItem.ImagePath
+                    EventImageURL = SharedConfig.SaudiEventsApiRoot + eventItem.ImagePath,
+                    EventLatitude = eventItem.EventLatitude,
+                    EventLongitude = eventItem.EventLongitude
                 });
             }
         }

@@ -42,6 +42,20 @@ namespace SureAppTest.ViewModels.ItemViewModels
             get { return eventEndDate; }
             set { SetProperty(ref eventEndDate, value); }
         }
+
+        private string eventLatitude;
+        public string EventLatitude
+        {
+            get { return eventLatitude; }
+            set { SetProperty(ref eventLatitude, value); }
+        }
+
+        private string eventLongitude;
+        public string EventLongitude
+        {
+            get { return eventLongitude; }
+            set { SetProperty(ref eventLongitude, value); }
+        }
     }
 }
 

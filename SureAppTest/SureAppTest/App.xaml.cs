@@ -46,6 +46,7 @@ namespace SureAppTest
             containerRegistry.Register<IEventsApi, EventsApi>();
             containerRegistry.Register<IEventsFacade, EventsFacade>();
             containerRegistry.Register<IMediCareService, MediCareService>();
+            containerRegistry.RegisterForNavigation<EventMapPage>();
         }
     }
 }

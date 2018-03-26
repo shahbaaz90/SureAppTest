@@ -33,7 +33,8 @@
             <controls:InfiniteListControl
                 Grid.Row="1"
                 Margin="5,0,5,5"
-                ItemsSource="{Binding EventsList}">
+                ItemsSource="{Binding EventsList}"
+                SelectedItem="{Binding EventSelected}" >
                 <controls:InfiniteListControl.ItemTemplate>
                     <DataTemplate>
                         <ImageCell
