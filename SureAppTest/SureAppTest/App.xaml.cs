@@ -40,13 +40,13 @@ namespace SureAppTest
             containerRegistry.RegisterForNavigation<EventsListPage>();
             containerRegistry.RegisterForNavigation<MediSupplierPage>();
             containerRegistry.RegisterForNavigation<EventsFilterPage>();
+            containerRegistry.RegisterForNavigation<EventMapPage>();
 
             //Register Types
             containerRegistry.Register<IRestService, RestService>();
             containerRegistry.Register<IEventsApi, EventsApi>();
             containerRegistry.Register<IEventsFacade, EventsFacade>();
             containerRegistry.Register<IMediCareService, MediCareService>();
-            containerRegistry.RegisterForNavigation<EventMapPage>();
         }
     }
 }
