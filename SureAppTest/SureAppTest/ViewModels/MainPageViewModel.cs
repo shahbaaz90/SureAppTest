@@ -2,6 +2,7 @@
 using Prism.Mvvm;
 using Prism.Navigation;
 using SureAppTest.Common;
+using SureAppTest.Resources;
 using SureAppTest.Services;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace SureAppTest.ViewModels
         {
             this.localizeService = localizeService;
             Title = "Welcome";
-            LangString = "EN";
+            LangString = localizeService.CurrentCulture.TwoLetterISOLanguageName.ToUpper();
 
             EventsListCommand = new DelegateCommand(async () => await NavigateToEventsList());
             MediSupplierCommand = new DelegateCommand(async () => await NavigateToMediSuppliers());
@@ -40,6 +41,7 @@ namespace SureAppTest.ViewModels
                 localizeService.ChangeLocale("en");
                 LangString = "EN";
             }
+            
         }
 
         private string langString;

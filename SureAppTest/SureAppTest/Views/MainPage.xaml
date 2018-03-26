@@ -3,6 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="SureAppTest.Views.MainPage"
+    xmlns:local="clr-namespace:SureAppTest.Resources"
     Title="{Binding Title}"
     Padding="5,0,5,5">
     <ContentPage.ToolbarItems>
@@ -17,12 +18,12 @@
         <Button
             HorizontalOptions="FillAndExpand"
             HeightRequest="40"
-            Text="Events List"
+            Text="{local:Translate txtEventsList}"
             Command="{Binding EventsListCommand}" />
         <Button
             HorizontalOptions="FillAndExpand"
             HeightRequest="40"
-            Text="Medi Supplier"
+            Text="{local:Translate txtMediSupplier}"
             Command="{Binding MediSupplierCommand}" />
     </StackLayout>
 
