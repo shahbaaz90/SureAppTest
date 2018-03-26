@@ -10,6 +10,7 @@ using SureAppTest.Common.Models;
 using SureAppTest.Facade.Facades;
 using SureAppTest.Common;
 using System.Windows.Input;
+using System.Threading.Tasks;
 
 namespace SureAppTest.ViewModels
 {
@@ -74,25 +75,34 @@ namespace SureAppTest.ViewModels
             get { return !IsBusy; }
         }
 
-        private void SortEvents()
+        private async void SortEvents()
         {
-            var sortList = new List<EventItemViewModel>(EventsList);
+            IsBusy = true;
 
-            if (isNearestEvent)
+            await Task.Run(() =>
             {
-                sortList = sortList.OrderByDescending(x => x.EventStartDate).ToList();
-            }
-            else
-            {
-                sortList = sortList.OrderBy(x => x.EventStartDate).ToList();
-            }
-            isNearestEvent = !isNearestEvent;
 
-            EventsList.Clear();
-            foreach (var item in sortList)
-            {
-                EventsList.Add(item);
-            }
+                var sortList = new List<EventItemViewModel>(EventsList);
+
+                if (isNearestEvent)
+                {
+                    sortList = sortList.OrderByDescending(x => x.EventStartDate).ToList();
+                }
+                else
+                {
+                    sortList = sortList.OrderBy(x => x.EventStartDate).ToList();
+                }
+                isNearestEvent = !isNearestEvent;
+
+                EventsList.Clear();
+                foreach (var item in sortList)
+                {
+                    EventsList.Add(item);
+                }
+
+            });
+
+            IsBusy = false;
         }
 
         private ObservableCollection<EventItemViewModel> eventsList;
@@ -119,14 +129,14 @@ namespace SureAppTest.ViewModels
 
             if (parameters != null && parameters.ContainsKey(Constants.IsFilteredKey))
             {
-                    if (parameters[Constants.IsFilteredKey] == null || 
-                    parameters[Constants.StartDateKey] == null ||
-                    parameters[Constants.EndDateKey] == null)
-                    {
-                        return;
-                    }
+                if (parameters[Constants.IsFilteredKey] == null ||
+                parameters[Constants.StartDateKey] == null ||
+                parameters[Constants.EndDateKey] == null)
+                {
+                    return;
+                }
 
-                    IsBusy = true;
+                IsBusy = true;
 
                 var res = await eventsFacade.FilterEvents(Convert.ToDateTime(parameters[Constants.StartDateKey]),
                     Convert.ToDateTime(parameters[Constants.EndDateKey]));

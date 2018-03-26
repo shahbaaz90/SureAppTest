@@ -35,7 +35,7 @@ namespace SureAppTest.ViewModels
             IsBusy = true;
 
             var res = await mediCareService.GetSupplierByCity("California");
-            this.SupplierDataList = new ObservableCollection<SupplierData>(res);
+            this.SupplierDataList = new ObservableCollection<SupplierData>(res ?? Enumerable.Empty<SupplierData>());
 
             IsBusy = false;
         }
