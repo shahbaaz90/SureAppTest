@@ -5,7 +5,11 @@
     x:Class="SureAppTest.Views.MainPage"
     Title="{Binding Title}"
     Padding="5,0,5,5">
-
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Text="{Binding LangString}"
+            Command="{Binding ChangeLocaleCommand}" />
+    </ContentPage.ToolbarItems>
     <StackLayout
         HorizontalOptions="CenterAndExpand"
         VerticalOptions="CenterAndExpand"

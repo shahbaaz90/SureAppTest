@@ -3,6 +3,8 @@ using Android.Content.PM;
 using Android.OS;
 using Prism;
 using Prism.Ioc;
+using SureAppTest.Droid.Services;
+using SureAppTest.Services;
 
 namespace SureAppTest.Droid
 {
@@ -26,6 +28,7 @@ namespace SureAppTest.Droid
         public void RegisterTypes(IContainerRegistry container)
         {
             // Register any platform specific implementations
+            container.Register<ILocalizeService, LocalizeService>();
         }
     }
 }

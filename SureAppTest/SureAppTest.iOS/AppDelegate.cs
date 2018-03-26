@@ -1,6 +1,8 @@
 ﻿using Foundation;
 using Prism;
 using Prism.Ioc;
+using SureAppTest.iOS.Services;
+using SureAppTest.Services;
 using UIKit;
 
 
@@ -32,7 +34,7 @@ namespace SureAppTest.iOS
     {
         public void RegisterTypes(IContainerRegistry container)
         {
-
+            container.Register<ILocalizeService, LocalizeService>();
         }
     }
 }
