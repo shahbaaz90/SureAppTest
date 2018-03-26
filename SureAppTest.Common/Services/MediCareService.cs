@@ -23,8 +23,18 @@ namespace SureAppTest.Common.Services
 
         public async Task<IEnumerable<SupplierData>> GetSupplierByCity(string cityName)
         {
-           var res = await mediCareWebServiceClient.GetSupplierByCityAsync(
-               new GetSupplierByCityRequest(cityName));
+            GetSupplierByCityResponse res = new GetSupplierByCityResponse();
+
+            try
+            {
+                res = await mediCareWebServiceClient.GetSupplierByCityAsync(
+                   new GetSupplierByCityRequest(cityName));
+            }
+
+            catch
+            {
+
+            }
 
             return res?.SupplierDataLists?.SupplierDatas;
         }
