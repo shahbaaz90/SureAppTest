@@ -43,9 +43,20 @@
                 </TableSection>
                 <TableSection
                     Title="Location">
-                    <EntryCell
-                        Label="City"
-                        Text="{Binding SelectedCity}" />
+                    <ViewCell>
+                        <StackLayout
+                            Orientation="Horizontal"
+                            Margin="16,0">
+                            <Label
+                                VerticalOptions="CenterAndExpand"
+                                Text="City" />
+                            <Picker
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="EndAndExpand"
+                                ItemsSource="{Binding PickerCity}"
+                                SelectedItem="{Binding SelectedCity}" />
+                        </StackLayout>
+                    </ViewCell>
                 </TableSection>
             </TableRoot>
         </TableView>

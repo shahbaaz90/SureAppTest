@@ -6,6 +6,7 @@ using SureAppTest.Resources;
 using SureAppTest.Services;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -60,8 +61,8 @@ namespace SureAppTest.ViewModels
             NavigationParameters filterParams = new NavigationParameters
             {
                 { Constants.IsFilteredKey, false },
-                { Constants.StartDateKey, Convert.ToDateTime(Constants.DefStartDate) },
-                { Constants.EndDateKey, Convert.ToDateTime(Constants.DefEndDate) },
+                { Constants.StartDateKey, Convert.ToDateTime(Constants.DefStartDate, CultureInfo.InvariantCulture) },
+                { Constants.EndDateKey, Convert.ToDateTime(Constants.DefEndDate, CultureInfo.InvariantCulture) },
                 { Constants.CityKey, 0 }
             };
 

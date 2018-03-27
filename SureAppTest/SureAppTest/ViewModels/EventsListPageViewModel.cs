@@ -11,6 +11,7 @@ using SureAppTest.Facade.Facades;
 using SureAppTest.Common;
 using System.Windows.Input;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace SureAppTest.ViewModels
 {
@@ -158,8 +159,9 @@ namespace SureAppTest.ViewModels
 
                 IsBusy = true;
 
-                var res = await eventsFacade.FilterEvents(Convert.ToDateTime(parameters[Constants.StartDateKey]),
-                    Convert.ToDateTime(parameters[Constants.EndDateKey]));
+                var res = await eventsFacade.FilterEvents(Convert.ToDateTime(parameters[Constants.StartDateKey], CultureInfo.InvariantCulture),
+                                                          Convert.ToDateTime(parameters[Constants.EndDateKey], CultureInfo.InvariantCulture), 
+                                                          (int)parameters[Constants.CityKey]);
 
                 PopulateEvents(res);
                 allEvents = new List<EventItemViewModel>(EventsList);

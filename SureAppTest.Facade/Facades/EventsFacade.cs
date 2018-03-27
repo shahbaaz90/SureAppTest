@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using System.Threading.Tasks;
 using SureAppTest.Common;
@@ -36,8 +37,8 @@ namespace SureAppTest.Facade.Facades
         public async Task<IEnumerable<EventModel>> FilterEvents(DateTime? startDate, DateTime? endDate, int cityID = 0)
         {
             EventsListRequestModel eventsListQuery = new EventsListRequestModel() {
-                fromDate = startDate?.ToString(Constants.DefDateFormat),
-                toDate = endDate?.ToString(Constants.DefDateFormat),
+                fromDate = startDate?.ToString(Constants.DefDateFormat, CultureInfo.InvariantCulture),
+                toDate = endDate?.ToString(Constants.DefDateFormat, CultureInfo.InvariantCulture),
                 cityID = cityID
             };
 
